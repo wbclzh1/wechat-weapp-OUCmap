@@ -127,6 +127,7 @@ Page({
                 var key = config.Config.key;
                 var qidian = that.data.location.longitude + ',' + that.data.location.latitude;
                 var zhongdian = that.data.destination[2] + ',' + that.data.destination[1];
+                console.log('!!!!', that.data.markers)
                 var myAmapFun = new amapFile.AMapWX({ key: '17cb5ddef59f569e9d2ecf55a2242100' });
                 myAmapFun.getWalkingRoute({
                     origin: qidian,

@@ -4,7 +4,7 @@
     "pages/select/select",
     "pages/search/search",
     "pages/map/map",
-    "pages/test/test",
+    "pages/git/git",
     "pages/detail/detail"
   ],
   "window": {
