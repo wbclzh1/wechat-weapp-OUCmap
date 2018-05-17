@@ -1,0 +1,61 @@
+.flex-style{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.flex-item{
+  height: 35px; 
+  line-height: 35px;
+  text-align: center;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1
+}
+.flex-item.active{
+  color:#0091ff;
+}
+.map_box{
+  position:absolute;
+  top: 85px;
+  bottom: 90px;
+  left: 0px;
+  right: 0px;
+}
+#navi_map{
+  width: 100%;
+  height: 100%;
+}
+.text_box{
+  position:absolute;
+  height: 90px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+.text_box .text{
+  margin: 15px;
+}
+.detail_button{
+  position:absolute;
+  bottom: 30px;
+  right: 10px;
+  padding: 3px 5px;
+  color: #fff;
+  background: #1aad19;
+  width:50px;
+  text-align:center;
+  border-radius:5px;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+ 
+}
+.project-item {
+  margin: 10rpx 0 0 5rpx;
+}
+.project-git {
+  font-size: 28rpx;
+  color: blue;
+}

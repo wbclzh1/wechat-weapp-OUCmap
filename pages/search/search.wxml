@@ -1,0 +1,48 @@
+<view class="page">
+    <view class="page__bd">
+        <view wx:if="{{flag == 0}}"><view class="weui-cells__title">请输入目的地</view></view>
+        <view wx:if="{{flag == 1}}"><view class="weui-cells__title">请输入始发地</view></view>
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view wx:if="{{flag == 1}}">
+        <view  class="weui-cells searchbar-result">
+        <navigator url="../map/map?flag=1&pot=当前位置,,&expot={{expot}}" class="weui-cell" hover-class="weui-cell_active">
+            <view class="weui-cell__bd">
+                    <view>当前位置</view>
+            </view>
+          </navigator>        
+        </view>
+        </view>
+
+        
+        <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
+          <view wx:if="{{resnum > 0}}">
+            <navigator url="../map/map?flag={{flag}}&pot={{result1[item.id]}}&expot={{expot}}" wx:for="{{result2}}" wx:key="id" style="display: block;">
+              <view class="weui-cell" hover-class="weui-cell_active">
+                <view>{{item.name}}</view>
+              </view>            
+            </navigator>
+          </view>
+          <view wx:if="{{resnum == 0}}">        
+            <view class="weui-cell">
+              <view>暂无搜索结果</view>
+            </view>
+          </view>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,30 @@
+ <view class="page">
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="../search/search?flag=1&epna={{destination[0]}}&epla={{destination[1]}}&&eplo={{destination[2]}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">始发地</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{location.name}}</view>
+            </navigator>
+            <navigator url="../search/search?flag=0&epna={{location.name}}&epla={{location.latitude}}&&eplo={{location.longitude}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="{{icon}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">目的地</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access">{{destination[0]}}</view> 
+            </navigator>
+        </view>
+        <view class="text_box">
+        <view class="text">{{distance}}</view>
+        <view class="text">{{cost}}</view>
+        <view class="detail_button" bindtouchstart="goDetail">详情</view>
+        </view>
+    </view>
+</view>
+<view class="map_box">
+    <map id="navi_map" longitude="{{location.longitude}}" latitude="{{location.latitude}}" scale="18" markers="{{markers}}" polyline="{{polyline}}"></map>
+</view>
+
+
