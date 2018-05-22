@@ -16,6 +16,7 @@ Page({
           latitude: ''
         }, //始发地点
         destination: [], //目的地点
+        midpoint: {},
         flag: 0,
         expot: ["NULL", "NULL", "NULL"] //记录当前始发地or目的地        
     },
@@ -86,7 +87,7 @@ Page({
         wx.getLocation({
           type: 'gcj02',
             success: function(res) {
-                console.log(res)                
+                console.log(res);
                 if (that.data.location.name == '当前位置'){
                   that.setData({
                     location: {
@@ -94,7 +95,11 @@ Page({
                       longitude: res.longitude,
                       latitude: res.latitude
                     }
-                  })
+                  });
+                }
+                var midp = {
+                  latitude: (that.data.location.latitude + parseFloat(that.data.destination[1])) * 0.5,
+                  longitude: (that.data.location.longitude + parseFloat(that.data.destination[2])) * 0.5
                 }
                 that.setData({
                     hasLocation: true,
@@ -112,8 +117,9 @@ Page({
                       longitude: that.data.destination[2],
                       width: 24,
                       height: 34
-                    }]
-                })
+                    }],
+                    midpoint: midp
+                });
                 var key = config.Config.key;
                 var qidian = that.data.location.longitude + ',' + that.data.location.latitude;
                 var zhongdian = that.data.destination[2] + ',' + that.data.destination[1];

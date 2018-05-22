@@ -20,18 +20,16 @@
         </view>
         <view wx:if="{{flag == 1}}">
         <view  class="weui-cells searchbar-result">
-        <navigator url="../map/map?flag=1&pot=当前位置,,&expot={{expot}}" class="weui-cell" hover-class="weui-cell_active">
+        <navigator url="../map/map?flag=1&pot=当前位置,,&expot={{expot}}" class="weui-cell">
             <view class="weui-cell__bd">
                     <view>当前位置</view>
             </view>
           </navigator>        
         </view>
         </view>
-
-        
         <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
           <view wx:if="{{resnum > 0}}">
-            <view url="" wx:for="{{result}}" wx:for-index="id" wx:for-item="item" style="display: block;">
+            <view wx:for="{{result}}" wx:for-index="id" wx:for-item="item" style="display: block;">
               <view bindtap="Judge" data-pot="{{item}}" class="weui-cell" hover-class="weui-cell_active">
                 <view>{{item[0]}}</view>
               </view>            

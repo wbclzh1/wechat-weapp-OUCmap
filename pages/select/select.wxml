@@ -14,9 +14,9 @@
                 <view class="page__bd page__bd_spacing">
                   <navigator url="../map/map?flag=0&pot={{item}}&expot=当前位置,," wx:for="{{result}}" wx:for-index="id" wx:for-item="item" style="display: block;">
                     <button class="weui-btn" type="primary" plain="true">{{item[0]}}</button>
-                  </navigator>                
+                  </navigator>
                 </view>
-                </view>
+              </view>
             </view>
         </view>
     </view>

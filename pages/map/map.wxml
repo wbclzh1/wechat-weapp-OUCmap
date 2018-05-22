@@ -24,7 +24,7 @@
     </view>
 </view>
 <view class="map_box">
-    <map id="navi_map" longitude="{{location.longitude}}" latitude="{{location.latitude}}" scale="18" markers="{{markers}}" polyline="{{polyline}}"></map>
+    <map id="navi_map" longitude="{{midpoint.longitude}}" latitude="{{midpoint.latitude}}" scale="17" markers="{{markers}}" polyline="{{polyline}}"></map>
 </view>
 
 
