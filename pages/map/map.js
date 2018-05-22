@@ -7,18 +7,19 @@ Page({
         markers: [],
         distance: '',
         cost: '',
-        polyline: [],
-        flag: 0,
+        polyline: [],        
         userInfo: {},
         hasLocation: false,
         location: {
           name: '当前位置',
           longitude: '',
           latitude: ''
-        },
-        destination: [],
-        expot: ["NULL", "NULL", "NULL"]
+        }, //始发地点
+        destination: [], //目的地点
+        flag: 0,
+        expot: ["NULL", "NULL", "NULL"] //记录当前始发地or目的地        
     },
+
     //事件处理函数
     bindViewTap: function() {
         wx.navigateTo({
@@ -28,15 +29,13 @@ Page({
 
     onLoad: function(pott) {
         console.log('onLoad')
-        console.log(pott)
+
+        //确定当前始发地与目的地位置
         var kpot = pott.pot.split(",");
         var kexp = pott.expot.split(",");
-        console.log('flag', pott.flag)
-        this.setData({
-          icon: base64.icon20
-        });
         var that = this;
         that.setData({
+          icon: base64.icon20,
           expot: kexp,
           destination: {
             0: kpot[0],
@@ -44,7 +43,6 @@ Page({
             1: kpot[1]
           }
         });
-        
         if (that.data.expot[0] != 'undefined'){
           if (pott.flag == 0){
             that.setData({
@@ -59,9 +57,6 @@ Page({
                 1: kpot[1]
               }
             });
-            
-            console.log('保持location', that.data.location)
-            console.log('当前destination', that.data.destination)
           }
           if (pott.flag == 1) {
             that.setData({
@@ -76,11 +71,7 @@ Page({
                 latitude: kpot[1]
               }
             });
-            console.log('保持destination', that.data.destination)
-            console.log('当前location', that.data.location)
           }
-
-
         }
         
         //调用应用实例的方法获取全局数据
@@ -90,21 +81,20 @@ Page({
                     userInfo: userInfo,
                 })
             }),
+        
+        //确定当前位置
         wx.getLocation({
           type: 'gcj02',
             success: function(res) {
                 console.log(res)                
                 if (that.data.location.name == '当前位置'){
                   that.setData({
-                    //destination: pot,
                     location: {
                       name: '当前位置',
                       longitude: res.longitude,
                       latitude: res.latitude
                     }
                   })
-                  console.log("返回当前位置！！")         
-                  console.log(that.data.destination, that.data.location)
                 }
                 that.setData({
                     hasLocation: true,
@@ -127,7 +117,9 @@ Page({
                 var key = config.Config.key;
                 var qidian = that.data.location.longitude + ',' + that.data.location.latitude;
                 var zhongdian = that.data.destination[2] + ',' + that.data.destination[1];
-                console.log('!!!!', that.data.markers)
+                var myAmapFun = new amapFile.AMapWX({ key: '17cb5ddef59f569e9d2ecf55a2242100' });
+
+                //高德路径规划接口
                 var myAmapFun = new amapFile.AMapWX({ key: '17cb5ddef59f569e9d2ecf55a2242100' });
                 myAmapFun.getWalkingRoute({
                     origin: qidian,
@@ -173,6 +165,7 @@ Page({
         })
     },
     goDetail: function() {
+      //转入详情页面
       var that = this;
       var url = '../detail/detail?msg=' + that.data.location.longitude + ',' + that.data.location.latitude + 'U' + that.data.destination[2] + ',' + that.data.destination[1];
         wx.navigateTo({

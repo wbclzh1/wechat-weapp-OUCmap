@@ -31,11 +31,11 @@
         
         <view class="weui-cells searchbar-result" wx:if="{{inputVal.length > 0}}">
           <view wx:if="{{resnum > 0}}">
-            <navigator url="../map/map?flag={{flag}}&pot={{result1[item.id]}}&expot={{expot}}" wx:for="{{result2}}" wx:key="id" style="display: block;">
-              <view class="weui-cell" hover-class="weui-cell_active">
-                <view>{{item.name}}</view>
+            <view url="" wx:for="{{result}}" wx:for-index="id" wx:for-item="item" style="display: block;">
+              <view bindtap="Judge" data-pot="{{item}}" class="weui-cell" hover-class="weui-cell_active">
+                <view>{{item[0]}}</view>
               </view>            
-            </navigator>
+            </view>
           </view>
           <view wx:if="{{resnum == 0}}">        
             <view class="weui-cell">
