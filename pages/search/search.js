@@ -102,6 +102,12 @@ Page({
     var goingto = e.target.dataset.pot;
     var that = this;
     var nowat = that.data.expot.split(",");
+    if (nowat[0] == 'undefined'){
+      that.setData({
+        flag: '0',
+        expot: '当前位置,,'
+      });      
+    }
     var url = '../map/map?flag=' + that.data.flag + '&pot=' + e.target.dataset.pot + '&expot=' + that.data.expot;
     if (goingto[0] != nowat[0]) {
       //转入地图页面

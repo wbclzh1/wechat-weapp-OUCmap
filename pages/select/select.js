@@ -54,7 +54,6 @@ Page({
         sym: flag
       },
       success: function (res) {
-        console.log('8888888888888888888', res)
         that.setData({
           value: res,
           text: res.data
