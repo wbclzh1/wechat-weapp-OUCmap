@@ -1,4 +1,5 @@
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+const app = getApp();
 
 Page({
   data: {
@@ -44,7 +45,7 @@ Page({
 
     //向后台发送请求
     wx.request({
-      url: 'http://1.oucmaptest.applinzi.com/test.php',
+      url: app.globalData.serverurl,
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

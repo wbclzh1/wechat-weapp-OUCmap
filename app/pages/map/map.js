@@ -1,6 +1,7 @@
 var amapFile = require('../../libs/amap-wx.js');
 var config = require('../../libs/config.js');
 var base64 = require("../../img/base64");
+const app = getApp();
 
 Page({
     data: {
@@ -106,11 +107,12 @@ Page({
 
                 //高德API路线规划接口
                 var key = config.Config.key;
-                var myAmapFun = new amapFile.AMapWX({ key: '17cb5ddef59f569e9d2ecf55a2242100' });
+                var myAmapFun = new amapFile.AMapWX({ key: app.globalData.mapkey });
                 myAmapFun.getWalkingRoute({
                   origin: that.data.location.longitude + ',' + that.data.location.latitude,
                   destination: that.data.destination[2] + ',' + that.data.destination[1],
                   success: function (data) {
+                    console.log(data)
                     var points = [];
                     if (data.paths && data.paths[0] && data.paths[0].steps) {
                       var steps = data.paths[0].steps;

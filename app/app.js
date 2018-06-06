@@ -25,6 +25,8 @@ App({
     }
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    serverurl:  'http://1.oucmaptest.applinzi.com/server_oucmaptest.php',  //后台地址
+    mapkey: '17cb5ddef59f569e9d2ecf55a2242100' //高德KEY
   }
 })

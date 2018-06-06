@@ -1,5 +1,6 @@
 var amapFile = require('../../libs/amap-wx.js');
 var config = require('../../libs/config.js');
+const app = getApp();
 
 Page({
   data: {
@@ -52,7 +53,7 @@ Page({
 
     //向后台发送请求
     wx.request({
-      url: 'http://1.oucmaptest.applinzi.com/test.php',
+      url: app.globalData.serverurl,
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
